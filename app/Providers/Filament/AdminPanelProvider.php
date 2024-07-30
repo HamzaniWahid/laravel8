@@ -24,11 +24,33 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            // ->topNavigation()
+            // ->brandLogo(fn () => view('components.application-logo'))
+            ->brandName('Beauty Store')
+            // ->favicon(asset('favicon.png'))
+            ->databaseNotifications()
+            ->sidebarCollapsibleOnDesktop()
+            ->collapsedSidebarWidth('9rem')
+            // ->topbar(false)
+            ->login()
+            ->registration()
+            ->passwordReset()
+            ->emailVerification()
+            ->profile()
+            ->authGuard('web')
+            // ->domain('admin.example.com')
+            // ->sidebarWidth('20rem')
             ->id('admin')
             ->path('admin')
             ->login()
+            ->font('Poppins')
             ->colors([
-                'primary' => Color::Green,
+                'danger' => Color::Rose,
+                'secondary' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Indigo,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
