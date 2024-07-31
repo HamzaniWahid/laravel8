@@ -78,14 +78,15 @@ class InventoriesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('nama')->label('Nama')->searchable(),
-                TextColumn::make('merek.nama')->label('Merek')->searchable(),
-                TextColumn::make('jumlah')->label('Jumlah')->searchable(),
-                TextColumn::make('kategori.nama')->label('Kategori')->searchable(),
+                TextColumn::make('nama')->label('Nama')->searchable()->sortable(),
+                TextColumn::make('merek.nama')->label('Merek')->searchable()->sortable(),
+                TextColumn::make('jumlah')->label('Jumlah')->searchable()->sortable(),
+                TextColumn::make('kategori.nama')->label('Kategori')->searchable()->sortable(),
                 TextColumn::make('expired')
                     ->label('Tanggal_Expired')
                     ->searchable()
-                    ->badge()
+                    ->badge() 
+                    ->sortable()
                     ->color(function (string $state): string {
                         $date = Carbon::parse($state);
                         $now = now();
@@ -111,10 +112,12 @@ class InventoriesResource extends Resource
                     //     return Carbon::parse($state)->format('d-m-Y');
                     // })
                     ,
-                TextColumn::make('hargaJual')->searchable()
+                TextColumn::make('hargaJual')->searchable() 
+                    ->sortable()
                     ->money('Rp.')
                     ->label('Harga_Jual'),
                 TextColumn::make('hargaBeli')->searchable()
+                    ->sortable()
                     ->money('Rp.')
                     ->label('Harga_Beli')
                     ->hidden(fn() => !in_array(Auth::user()->email, [
