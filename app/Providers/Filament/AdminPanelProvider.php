@@ -26,6 +26,24 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             // ->topNavigation()
             // ->brandLogo(fn () => view('components.application-logo'))
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make()
+                ->gridColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                    'lg' => 3
+                ])
+                ->sectionColumnSpan(1)
+                ->checkboxListColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                    'lg' => 4,
+                ])
+                ->resourceCheckboxListColumns([
+                    'default' => 1,
+                    'sm' => 2,
+                ]),
+            ])
             ->brandName('Beauty Store')
             // ->favicon(asset('favicon.png'))
             ->databaseNotifications()
@@ -33,7 +51,7 @@ class AdminPanelProvider extends PanelProvider
             ->collapsedSidebarWidth('9rem')
             // ->topbar(false)
             ->login()
-            // ->registration()
+            ->registration()
             ->passwordReset()
             // ->emailVerification()
             ->profile()

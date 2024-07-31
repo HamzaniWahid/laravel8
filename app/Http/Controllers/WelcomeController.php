@@ -30,7 +30,8 @@ class WelcomeController extends Controller
              ->pluck('total')
              ->toArray();
 
-        return view('welcome', compact('totalInventories', 'totalExpired', 'almostExpired'));
+        // return view('welcome', compact('totalInventories', 'totalExpired', 'almostExpired'));
+        return redirect('/admin');
     }
 
     /**
