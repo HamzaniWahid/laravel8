@@ -44,15 +44,15 @@ class InventoriesResource extends Resource
     {
         return $form
             ->schema([
+                Group::make([
+                    Select::make('kategori_id')->label('Kategori')
+                        ->options(Kategories::all()->pluck('nama', 'id')),
+                    Select::make('merek_id')->label('Merek')
+                        ->options(Merek::all()->pluck('nama', 'id')),
+                ]),
                 Grid::make(2)
                     ->schema([
                         TextInput::make('nama')->label('Nama'),
-                        Group::make([
-                            Select::make('merek_id')->label('Merek')
-                                ->options(Merek::all()->pluck('nama', 'id')),
-                            Select::make('kategori_id')->label('Kategori')
-                                ->options(Kategories::all()->pluck('nama', 'id')),
-                        ]),
                     ]),
                 Grid::make(4)
                     ->schema([

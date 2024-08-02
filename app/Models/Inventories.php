@@ -18,4 +18,7 @@ class Inventories extends Model
     public function merek():BelongsTo {
         return $this->belongsTo(Merek::class);
     }
+    public function transaction_detail(){
+        return $this->hasMany(Transaction_detail::class);
+    }
 }

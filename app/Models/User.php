@@ -62,4 +62,7 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->avatar_url;
     }
+    public function transaction_detail(){
+        return $this->hasMany(Transaction_detail::class);
+    }
 }
